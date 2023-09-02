@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class EmployeeDetailLogWriter implements ItemWriter<EmployeeDetail> {
     @Override
     public void write(Chunk<? extends EmployeeDetail> chunk) throws Exception {
-        log.info("Chunk Size: {}, UserData: {}", chunk.size(), chunk.getUserData());
+        log.info("Chunk Size: {}", chunk.size());
         for (EmployeeDetail emp: chunk.getItems()) {
             log.info("Employee Detail: {}", emp);
         }

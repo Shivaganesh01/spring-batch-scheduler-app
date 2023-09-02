@@ -16,13 +16,10 @@ import java.util.Map;
 
 @Component("employeeReader")
 @StepScope
-public class EmployeeReader extends JdbcPagingItemReader<Employee> {
+public class EmployeeReader {
 
     @Autowired
     private DataSource dataSource;
-
-    private static final String EMPLOYEE_BY_DEPT =
-            "SELECT id, name, department, salary from employee where department = :dept";
 
     public JdbcPagingItemReader<Employee> getPaginationReader() {
         final JdbcPagingItemReader<Employee> reader = new JdbcPagingItemReader<>();
@@ -43,7 +40,8 @@ public class EmployeeReader extends JdbcPagingItemReader<Employee> {
         sortKeys.put("id", Order.ASCENDING);
         final H2PagingQueryProvider queryProvider = new H2PagingQueryProvider();
         queryProvider.setSelectClause("*");
-        queryProvider.setFromClause(EMPLOYEE_BY_DEPT);
+        queryProvider.setFromClause("employee");
+        queryProvider.setWhereClause("department = :dept");
         queryProvider.setSortKeys(sortKeys);
         return queryProvider;
     }
