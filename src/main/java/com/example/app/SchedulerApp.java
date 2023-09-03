@@ -32,17 +32,18 @@ public class SchedulerApp {
         dateTimeLogger();
     }
 
-//    @Scheduled(fixedRateString = "${app.scheduler.fixed-rate}")
+//    @Scheduled(initialDelayString = "${app.scheduler.initial-delay}", fixedRateString = "${app.scheduler.fixed-rate}")
     public void scheduledMethod2(){
         log.info("Scheduled method using fixedRateString: {}", fixedRateString);
         dateTimeLogger();
     }
 
 //    @Scheduled(initialDelayString = "${app.scheduler.initial-delay}", fixedDelayString = "${app.scheduler.fixed-delay}")
-    public void scheduledMethod3(){
+    public void scheduledMethod3() throws InterruptedException {
         log.info("Scheduled method using initialDelayString: {}, fixedDelayString: {}",
                 initialDelayString, fixedDelayString);
         dateTimeLogger();
+        Thread.sleep(5000);
     }
 
     private void dateTimeLogger(){

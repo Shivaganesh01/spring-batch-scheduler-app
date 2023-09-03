@@ -6,8 +6,6 @@ import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.support.H2PagingQueryProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
